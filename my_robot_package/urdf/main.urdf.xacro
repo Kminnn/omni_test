@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot name="simple_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_footprint" />
+  
+
+  <xacro:include filename="$(find my_robot_package)/urdf/base_link.urdf.xacro" />
+  <xacro:include filename="$(find my_robot_package)/urdf/ros2_control.urdf.xacro" />
+  <xacro:include filename="$(find my_robot_package)/urdf/gazebo_plugins.urdf.xacro" />   
+
+ 
+  <!-- Base Link -->
+  <!-- <link name="base_link" /> -->
+  <xacro:base_link  parent="base_footprint" xyz="0 0 0.0262" rpy="0 0 0" />
+
+  <!-- <xacro:omni_wheel parent="base_link" suffix="1" xyz="0 0 0" rpy="0 0 0"/> -->
+
+<gazebo>
+  <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+    <robot_param>robot_description</robot_param>
+  </plugin>
+</gazebo>
+
+</robot>
